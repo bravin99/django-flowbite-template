@@ -11,7 +11,7 @@
     <title>Django Tailwindcss Flowbite</title>
 
     {% compress css %}
-        <link rel="stylesheet" href="{% static 'src/output.css' %}">
+      <link rel="stylesheet" href="{% static 'css/output.css' %}">
     {% endcompress %}
 </head>  
 
@@ -86,16 +86,20 @@
         {% block content %}
         {% endblock content %}
     </main>
+    {% include 'footer.html' %}
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-    <script src="{% static 'src/js/main.js' %}"></script>
-    <script>
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
-    </script>
+    {% compress js %}
+      <script src="{% static 'js/main.js' %}"></script>
+      <script>
+          // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+          if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+          } else {
+              document.documentElement.classList.remove('dark')
+          }
+      </script>
+    {% endcompress %}
 </body>
 
 </html>

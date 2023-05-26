@@ -2,42 +2,65 @@
 
 ## Running In Development
 
+<!-- - Install Memcached
+  - Ubuntu
+
+    ``` sh
+    sudo apt-get install Memcached
+    ```
+
+  - Arch Linux
+
+    ```sh
+    sudo pacman -S memcached
+    sudo systemctl status memcached
+    ``` -->
 
 - create your project folder to clone into
 
-``` sh
-mkdir <project_folder>
-git clone <url> <project_folder>
-```
+    ``` sh
+    mkdir <project_folder>
+    git clone <url> <project_folder>
+    ```
 
 - create virtual environment
 
-``` sh
-python -m venv .venv
-source .venv/bin/activate
-```
+    ``` sh
+    python -m venv .venv
+    source .venv/bin/activate
+    ```
 
 - install requirements
 
-``` sh
-pip install -r requirements.txt
-```
+    ``` sh
+    pip install -r requirements.txt
+    ```
 
 - install tailwindcss & flowbite
 
-``` sh
-npm install -D tailwindcss
-npm install flowbite
-```
+    ``` sh
+    npm install -D tailwindcss
+    npm install flowbite
+    ```
 
 - Generate css files
 
-``` sh
-npx tailwindcss -i ./static/src/input.css -o ./static/src/output.css --watch
-```
+    ``` sh
+    npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch
+    ```
+
+- Create database
+
+    ```sh
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+
 
 - Run server
 
-```sh
-python manage.py runserver
-```
+    ```sh
+    python manage.py collectstatic
+    python manage.py compress --force
+    python manage.py runserver
+    ```
