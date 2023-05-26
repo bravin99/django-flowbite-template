@@ -7,8 +7,7 @@
 
 ``` sh
 mkdir <project_folder>
-cd <project_folder>
-git clone <url> .
+git clone <url> <project_folder>
 ```
 
 - create virtual environment
