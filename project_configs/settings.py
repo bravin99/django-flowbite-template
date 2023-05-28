@@ -1,4 +1,5 @@
 import os
+from distutils.util import strtobool
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -18,9 +19,9 @@ except KeyError as e:
     raise RuntimeError('Could not load SECRET_KEY from environment') from e
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = bool(strtobool(os.environ['DEBUG_STATE']))
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(',')
 
 
 # Application definition
@@ -32,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise',
     'compressor',
 
     'main_app',
@@ -43,6 +45,7 @@ MIDDLEWARE = [
     'htmlmin.middleware.MarkRequestMiddleware',
 
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -133,6 +136,12 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder'
     )
+
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # COMPRESS_ROOT = BASE_DIR / "static"
 COMPRESS_ENABLED = True

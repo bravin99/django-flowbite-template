@@ -64,3 +64,5 @@
     python manage.py compress --force
     python manage.py runserver
     ```
+
+[https://medium.com/@ganapriyakheersagar/hosting-django-application-with-nginx-and-gunicorn-in-production-99e64dc4345a](https://medium.com/@ganapriyakheersagar/hosting-django-application-with-nginx-and-gunicorn-in-production-99e64dc4345a)
