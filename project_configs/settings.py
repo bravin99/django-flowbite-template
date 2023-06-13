@@ -36,8 +36,11 @@ INSTALLED_APPS = [
     'whitenoise',
     'compressor',
 
+    'accounts',
     'main_app',
 ]
+
+AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
     'django.middleware.gzip.GZipMiddleware',

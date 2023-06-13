@@ -5,7 +5,8 @@ from project_configs import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("main_app.urls")),
+    path('account/', include('django.contrib.auth.urls')),
+    path('', include('main_app.urls')),
 ]
 
 handler400 = views.error_400

@@ -2,20 +2,6 @@
 
 ## Running In Development
 
-<!-- - Install Memcached
-  - Ubuntu
-
-    ``` sh
-    sudo apt-get install Memcached
-    ```
-
-  - Arch Linux
-
-    ```sh
-    sudo pacman -S memcached
-    sudo systemctl status memcached
-    ``` -->
-
 - create your project folder to clone into
 
     ``` sh
