@@ -22,19 +22,6 @@
     pip install -r requirements.txt
     ```
 
-- install tailwindcss & flowbite
-
-    ``` sh
-    npm install -D tailwindcss
-    npm install flowbite
-    ```
-
-- Generate css files
-
-    ``` sh
-    npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch
-    ```
-
 - Create database
 
     ```sh
@@ -42,7 +29,19 @@
     python manage.py migrate
     ```
 
+- install tailwindcss & flowbite
 
+    ``` sh
+    npm install -D tailwindcss
+    npm install flowbite
+    ```
+  
+- Generate css files
+
+    ``` sh
+    npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch
+    ```
+  
 - Run server
 
     ```sh
