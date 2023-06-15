@@ -43,8 +43,12 @@
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
                 {% if user.is_authenticated %}
                   <div class="px-4 py-3">
-                    <span class="block text-sm text-gray-900 dark:text-white">{{ user.get_full_name }}</span>
-                    <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ user.email }}</span>
+                    {% if user.email %}
+                        <span class="block text-sm text-gray-900 dark:text-white">{{ user.get_full_name }}</span>
+                        <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{ user.email }}</span>
+                    {% else %}
+                        <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{ user.username }}</span>
+                    {% endif %}
                   </div>
                   <ul class="py-2" aria-labelledby="user-menu-button">
                     <li>
