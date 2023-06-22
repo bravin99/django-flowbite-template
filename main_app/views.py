@@ -4,7 +4,7 @@ from django.contrib import messages
 
 
 def landing_page(request):
-    return render(request, 'core/landing.html')
+    return render(request, 'main_app/landing.html')
 
 
 def contact_us(request):
