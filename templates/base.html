@@ -111,15 +111,10 @@
     </main>
 
     {% include 'footer.html' %}
-
-    {#    messages#}
-    {% include 'messages.html' %}
-    {#    end messages#}
     
     <script src="{% static 'flowbite/flowbite.min.js' %}"></script>
     {% compress js %}
         <script src="{% static 'js/main.js' %}"></script>
-        <script src="{% static 'toastr/toastr.min.js' %}"></script>
         <script>
           // On page load or when changing themes, best to add inline in `head` to avoid FOUC
           if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -128,6 +123,13 @@
               document.documentElement.classList.remove('dark')
           }
         </script>
+
+        <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
+        <script src="{% static 'toastr/toastr.min.js' %}"></script>
+        {#    messages#}
+        {% include 'messages.html' %}
+        {#    end messages#}
+
     {% endcompress %}
 </body>
 
