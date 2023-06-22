@@ -4,6 +4,10 @@ from django.contrib import messages
 
 
 def landing_page(request):
+    messages.info(request, "Hello")
+    messages.success(request, "Hello 2")
+    messages.error(request, "Hello 3")
+    messages.warning(request, "Nice to meet yah")
     return render(request, 'main_app/landing.html')
 
 
