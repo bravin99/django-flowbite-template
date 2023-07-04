@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 
 class NewsletterBaseModel(models.Model):
@@ -14,4 +15,19 @@ class Subscriber(NewsletterBaseModel):
 
     def __str__(self):
         return f'{self.name}'
+
+
+class Newsletter(NewsletterBaseModel):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField()
+    content = models.TextField()
+    receivers = models.ManyToManyField(Subscriber, related_name='subscribers')
+
+    def __str__(self):
+        return f'{self.title}'
+
+    def save_base(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
