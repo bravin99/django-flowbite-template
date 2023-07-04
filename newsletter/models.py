@@ -24,7 +24,7 @@ class Newsletter(NewsletterBaseModel):
     receivers = models.ManyToManyField(Subscriber, related_name='subscribers')
 
     def __str__(self):
-        return f'{self.title}'
+        return f'{self.title} - {self.created}'
 
     def save_base(self, *args, **kwargs):
         if not self.slug:
