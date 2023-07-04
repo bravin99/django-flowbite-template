@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'main_app',
+    'newsletter',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
