@@ -18,3 +18,19 @@ def subscribe(request):
             messages.success(request, "Your subscription was successful")
 
     return redirect(request.META.get('HTTP_REFERER'))
+
+
+def unsubscribe(request):
+    email = request.GET['email']
+
+    try:
+        subscriber = Subscriber.objects.get(email=email)
+        subscriber.receive_emails = False
+        subscriber.save()
+        messages.success(request, "unsubscribe was successful")
+    except Subscriber.DoesNotExist:
+        messages.error(request, 'You are not subscribed to our mailing list')
+    except Exception as exc:
+        messages.error(request, 'Operation failed, please try again')
+
+    return redirect('landing')
