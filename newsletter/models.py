@@ -8,6 +8,7 @@ class NewsletterBaseModel(models.Model):
 
 
 class Subscriber(NewsletterBaseModel):
+    confirmation_id = models.CharField(max_length=40)
     email = models.EmailField()
     name = models.CharField(max_length=100)
     receive_emails = models.BooleanField(default=True)
