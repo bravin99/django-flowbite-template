@@ -27,6 +27,7 @@ def subscribe(request):
                 email_subject = 'Email confirmation for our newsletter'
                 message = render_to_string('emails/confirm_newsletter_email.html', {
                     'domain': site.domain,
+                    'name': name,
                     'confirm_code': confirmation_id
                 })
                 email_message = EmailMessage(email_subject, message, to=[email])
