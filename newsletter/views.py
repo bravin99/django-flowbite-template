@@ -34,3 +34,16 @@ def unsubscribe(request):
         messages.error(request, 'Operation failed, please try again')
 
     return redirect('landing')
+
+
+def confirmation(request, confirmation_id):
+    try:
+        subscriber = Subscriber.objects.get(confirmation_id=confirmation_id)
+        subscriber.confirmed = True
+        subscriber.save()
+        messages.success(request, 'Email address confirmed')
+        return redirect('landing')
+    except Subscriber.DoesNotExist:
+        messages.error(request, 'You must register your email before confirmation')
+
+    return render(request, 'confirm_email.html')
