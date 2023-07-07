@@ -62,8 +62,7 @@ def confirmation(request, confirmation_id):
         subscriber.confirmed = True
         subscriber.save()
         messages.success(request, 'Email address confirmed')
-        return redirect('landing')
     except Subscriber.DoesNotExist:
         messages.error(request, 'You must register your email before confirmation')
 
-    return render(request, 'confirm_email.html')
+    return redirect('landing')
