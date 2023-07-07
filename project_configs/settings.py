@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'whitenoise',
     'compressor',
+    'django_quill',
 
     'accounts',
     'main_app',
