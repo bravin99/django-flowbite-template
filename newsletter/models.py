@@ -23,7 +23,6 @@ class Newsletter(NewsletterBaseModel):
     title = models.CharField(max_length=255)
     slug = models.SlugField()
     content = QuillField()
-    receivers = models.ManyToManyField(Subscriber, related_name='subscribers')
 
     def __str__(self):
         return f'{self.title} - {self.created}'
