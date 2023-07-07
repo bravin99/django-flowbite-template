@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django_quill.fields import QuillField
 
 
 class NewsletterBaseModel(models.Model):
@@ -21,7 +22,7 @@ class Subscriber(NewsletterBaseModel):
 class Newsletter(NewsletterBaseModel):
     title = models.CharField(max_length=255)
     slug = models.SlugField()
-    content = models.TextField()
+    content = QuillField()
     receivers = models.ManyToManyField(Subscriber, related_name='subscribers')
 
     def __str__(self):
