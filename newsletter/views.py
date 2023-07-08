@@ -3,7 +3,7 @@ from newsletter.models import Subscriber, Newsletter
 from django.contrib import messages
 import uuid
 from smtplib import SMTPException, SMTPAuthenticationError, SMTPServerDisconnected
-from socket import error as SocketError
+from socket import error as socketerror
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from django.contrib.sites.shortcuts import get_current_site
@@ -32,7 +32,7 @@ def subscribe(request):
                 })
                 email_message = EmailMessage(email_subject, message, to=[email])
                 email_message.send()
-            except (SMTPException, SMTPAuthenticationError, SMTPServerDisconnected, SocketError) as exc:
+            except (SMTPException, SMTPAuthenticationError, SMTPServerDisconnected, socketerror) as exc:
                 messages.error(request, "Error sending email")
                 # TODO: log error
                 print(exc)
