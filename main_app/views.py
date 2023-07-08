@@ -4,7 +4,6 @@ from django.contrib import messages
 
 
 def landing_page(request):
-    messages.success(request, "Hello, welcome to django tailwind")
     return render(request, 'main_app/landing.html')
 
 
