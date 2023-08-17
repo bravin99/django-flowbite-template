@@ -9,7 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Bravin Shumwe">
-    <title>Django-Tailwindcss-Flowbite</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Site title</title>
 
     <!-- seo -->
     <!-- open graph -->
@@ -129,7 +131,8 @@
     <!-- End Newsletter -->
 
     {% include 'footer.html' %}
-    
+
+    <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
     <script src="{% static 'flowbite/flowbite.min.js' %}"></script>
     {% compress js %}
         <script src="{% static 'js/main.js' %}"></script>
@@ -141,13 +144,10 @@
               document.documentElement.classList.remove('dark')
           }
         </script>
-
-        <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
         <script src="{% static 'toastr/toastr.min.js' %}"></script>
         {#    messages#}
         {% include 'messages.html' %}
         {#    end messages#}
-
     {% endcompress %}
 </body>
 
