@@ -23,7 +23,6 @@ DEBUG = bool(strtobool(os.environ['DEBUG_STATE']))
 
 ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(',')
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -120,14 +119,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
-#         'LOCATION': '127.0.0.1:11211',
-#     }
-# }
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -144,7 +135,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = BASE_DIR / "static", # the , makes it a tuple
+STATICFILES_DIRS = BASE_DIR / "static",  # the , makes it a tuple
 STATIC_ROOT = "staticfiles"
 
 STATICFILES_FINDERS = (
@@ -157,17 +148,27 @@ STORAGES = {
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': '2023django-cache',
+    }
 }
 
 # COMPRESS_ROOT = BASE_DIR / "static"
 COMPRESS_ENABLED = True
 COMPRESS_CSS_HASHING_METHOD = 'content'
 COMPRESS_FILTERS = {
-    'css':[
+    'css': [
         'compressor.filters.css_default.CssAbsoluteFilter',
         'compressor.filters.cssmin.rCSSMinFilter',
     ],
-    'js':[
+    'js': [
         'compressor.filters.jsmin.JSMinFilter',
     ]
 }
