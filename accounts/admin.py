@@ -13,7 +13,7 @@ class UserAdmin(UserAdmin):
             'Extended',
             {
                 'fields': (
-                    'avatar', 'id_number',
+                    'avatar',
                 ),
             },
         ),

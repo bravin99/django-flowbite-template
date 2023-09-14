@@ -38,7 +38,6 @@ INSTALLED_APPS = [
 
     'accounts',
     'main_app',
-    'newsletter',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
@@ -92,9 +91,9 @@ DATABASES = {
 }
 
 # Email
-
-EMAIL_USE_TLS = os.environ["EMAIL_USE_TLS"]
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = os.environ["EMAIL_HOST"]
+EMAIL_USE_TLS = os.environ["EMAIL_USE_TLS"]
 EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
 EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
 EMAIL_PORT = os.environ["EMAIL_PORT"]
@@ -137,6 +136,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = BASE_DIR / "static",  # the , makes it a tuple
 STATIC_ROOT = "staticfiles"
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / "media"
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

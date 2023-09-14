@@ -8,7 +8,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
     path('', include('main_app.urls')),
-    path('newsletter/', include('newsletter.urls')),
 ]
 
 handler400 = views.error_400
