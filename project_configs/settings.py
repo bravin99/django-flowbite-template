@@ -96,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'alini_db',
         'USER': 'alini_db_user',
-        'PASSWORD': '',
+        'PASSWORD': 'alini',
         'HOST': '127.0.0.1',
         'PORT' : '3306',
         }
